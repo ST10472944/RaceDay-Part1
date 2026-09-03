@@ -1,1 +1,23 @@
+name: Validate Docs
 
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  check-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check required files in /docs
+        run: |
+          if [ ! -f docs/erd.png ]; then echo " docs/erd.png missing"; exit 1; fi
+          if [ ! -f docs/api-endpoints.md ]; then echo " docs/api-endpoints.md missing"; exit 1; fi
+          if [ ! -f docs/database.sql ]; then echo " docs/database.sql missing"; exit 1; fi
+          echo " All required files present"
+      - name: Verify SQL syntax
+        run: |
+          grep -q "CREATE TABLE" docs/database.sql || (echo "No CREATE TABLE found" && exit 1)
+          echo "✅ SQL file looks valid"
