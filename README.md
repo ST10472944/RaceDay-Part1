@@ -11,8 +11,7 @@ RaceDay is a full‑stack web application for managing road running, walking, an
 ![Green build](docs/green-build.png)
 
 ## Video Presentation
-[Watch the walkthrough video](PASTE_YOUR_YOUTUBE_LINK_HERE)
-
+https://youtu.be/VnUw5D8pgJo
 ## Setup Instructions
 1. Clone this repository.
 2. Run `database.sql` on a SQL Server instance (SSMS) to create the database.
